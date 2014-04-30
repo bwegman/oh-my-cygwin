@@ -26,6 +26,11 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 # setting up zsh as default
 sed -i "s/$USER\:\/bin\/bash/$USER\:\/bin\/zsh/g" /etc/passwd
 
+# change some security stuff
+compaudit | xargs chown -R :Users
+compaudit | xargs chmod ga-w
+rm ~/.zcompdump*
+
 # et voila just start it
 /usr/bin/env zsh
 
